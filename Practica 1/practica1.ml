@@ -89,7 +89,7 @@ let arcos c (Af (_, alfabeto, _, _, _) as a) =
     | (h::t,alfabeto,a,l) ->
       let rec recorrido = function
         (_,[],_,_) -> conjunto_vacio
-        | ((c,e),h::t,a,l) -> agregar (Arco_af(e,asociado l (epsilon_cierre(avanza h c a) a),h)) (recorrido ((c,e),t,a,l))
+        | ((c,e),h::t,a,l) -> agregar (Arco_af(e,asociado l (epsilon_cierre(avanza h (epsilon_cierre c a) a) a),h)) (recorrido ((c,e),t,a,l))
       in union (recorrido (h,alfabeto,a,l)) (aux (t,alfabeto,a,l))
   in aux(list_of_conjunto c,list_of_conjunto alfabeto,a,list_of_conjunto c)
 ;;
@@ -108,7 +108,7 @@ let afd_of_afn (Af (_, alfabeto, inicial, _, _) as a) =
       false -> aux(a,(list_of_conjunto (union (conjunto_of_list f) (siguientes h a (list_of_conjunto alfabeto))), agregar (h,Estado (string_of_int n)) conjunto_tratado),n+1)
       | true -> aux(a, ( f, conjunto_tratado),n)
   in
-    aux (a ,( list_of_conjunto (siguientes (Conjunto [inicial]) a (list_of_conjunto alfabeto)), Conjunto  [(Conjunto [inicial], Estado "0")]) ,1)
+    aux (a ,( list_of_conjunto (siguientes (epsilon_cierre (Conjunto [inicial]) a) a (list_of_conjunto alfabeto)), Conjunto  [(Conjunto [inicial], Estado "0")]) ,1)
 
 ;;
 
