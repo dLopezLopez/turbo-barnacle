@@ -1,0 +1,19 @@
+# Estados
+0 1 2 3 4;
+
+# Terminales
+a b;
+
+# Estado inicial
+0;
+
+# Estados finales
+4;
+
+# Transiciones
+0 1 a;
+0 0 a;
+0 0 b;
+1 2 b;
+2 3 b;
+3 4 a;

@@ -6,6 +6,10 @@ open Graf;;
 
 let af = af_of_file "../data/ejemplo01.af";;
 let afn = af_of_file "../data/afn.af";;
+let ej24 = af_of_file "../data/ejercicio24.af";;
+let ej25 = af_of_file "../data/ejercicio25.af";;
+let ej26 = af_of_file "../data/ejercicio26.af";;
+let ej26b = af_of_file "../data/ejercicio26b.af";;
 let estados_afn = (Conjunto [(Conjunto [Estado "0"],Estado "0");(Conjunto [Estado "1";Estado "2"],Estado "1");(Conjunto [Estado "2"],Estado "2");(Conjunto [Estado "0";Estado "2"],Estado "3") ; (conjunto_vacio, Estado "4") ]);;
 let cadena = [Terminal "a";Terminal "a";Terminal "a";Terminal "b";Terminal "a";Terminal "c"];;
 
@@ -108,6 +112,6 @@ let afd_of_afn (Af (_, alfabeto, inicial, _, _) as a) =
 
 ;;
 
-let afd_of_afne = 
+let afd_of_afne =
   afd_of_afn
 ;;
